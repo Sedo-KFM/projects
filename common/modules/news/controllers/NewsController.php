@@ -55,7 +55,7 @@ class NewsController extends Controller
         $model = new News();
 
         if ($model->load(Yii::$app->request->post())) {
-            if (($f = UploadedFile::getInstance($model, 'img')))
+            if(($f = UploadedFile::getInstance($model, 'img')))
             {
                 $model->img = Upload::file($f, 'news', true);
                 if ($model->save()) {
