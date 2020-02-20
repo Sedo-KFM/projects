@@ -49,12 +49,14 @@ class NewsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+
     public function actionCreate()
     {
         $model = new News();
 
         if ($model->load(Yii::$app->request->post())) {
-            if (($f = UploadedFile::getInstance($model, 'img'))) {
+            if (($f = UploadedFile::getInstance($model, 'img')))
+            {
                 $model->img = Upload::file($f, 'news', true);
                 if ($model->save()) {
                     return $this->redirect(['view', 'id' => $model->id]);
